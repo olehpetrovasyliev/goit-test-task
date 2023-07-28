@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FollowingButton = ({ func, text }) => {
+const Button = ({ func, text }) => {
   return (
     <button type="button" onClick={func}>
       {text}
@@ -8,4 +8,4 @@ const FollowingButton = ({ func, text }) => {
   );
 };
 
-export default FollowingButton;
+export default Button;

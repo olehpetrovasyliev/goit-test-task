@@ -4,6 +4,7 @@ import Card from './Card/Card';
 import { selectUsers } from 'services/redux/selectors';
 import { fetchUsersPageThunk } from 'services/redux/operations';
 import { useEffect, useState } from 'react';
+import Button from './Button/Button';
 
 export const App = () => {
   const users = useSelector(selectUsers);
@@ -11,7 +12,7 @@ export const App = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    dispatch(fetchUsersPageThunk(page));
+    page > 0 && dispatch(fetchUsersPageThunk(page));
   }, [page]);
   const handleClick = () => {
     setPage(prev => prev + 1);
@@ -20,9 +21,7 @@ export const App = () => {
   return (
     <>
       <CardsList arr={users} />;
-      <button type="button" onClick={handleClick}>
-        more users!!!!!
-      </button>
+      <Button type="button" func={handleClick} text={'Load more'} />
     </>
   );
 };
