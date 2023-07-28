@@ -1,20 +1,17 @@
+import { nanoid } from '@reduxjs/toolkit';
 import Card from 'components/Card/Card';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUsersPageThunk } from 'services/redux/operations';
-import { selectContacts } from 'services/redux/selectors';
+import { selectUsers } from 'services/redux/selectors';
 
-const CardsList = () => {
+const CardsList = ({ arr }) => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  useEffect(() => {
-    dispatch(() => fetchUsersPageThunk(3));
-  }, []);
-  console.log(contacts);
+  // const users = useSelector(selectUsers);
+
   return (
     <ul>
-      {contacts.map(el => (
-        <Card user={el} />
+      {arr.map(el => (
+        <Card user={el} key={nanoid()} />
       ))}
     </ul>
   );

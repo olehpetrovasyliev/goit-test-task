@@ -1,9 +1,10 @@
+import { nanoid } from '@reduxjs/toolkit';
 import Button from 'components/Button/Button';
 import React from 'react';
 
 const Card = ({ user }) => {
   return (
-    <li key={user.id}>
+    <li>
       <div>
         <img src="../../img/card_picture_1x.png" alt="decoration" />
       </div>

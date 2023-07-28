@@ -1,20 +1,18 @@
+import { useDispatch, useSelector } from 'react-redux';
 import CardsList from './CadsList/CardsList';
 import Card from './Card/Card';
+import { selectUsers } from 'services/redux/selectors';
+import { fetchUsersPageThunk } from 'services/redux/operations';
+import { useEffect } from 'react';
 
 export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
-      React homework template
-      <CardsList />
-    </div>
-  );
+  const users = useSelector(selectUsers);
+  const dispatch = useDispatch();
+  let limit = 3;
+
+  useEffect(() => {
+    dispatch(() => fetchUsersPageThunk(limit));
+  }, [dispatch, limit]);
+
+  return <CardsList arr={users} />;
 };

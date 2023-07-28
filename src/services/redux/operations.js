@@ -6,11 +6,13 @@ export const fetchUsersPageThunk = createAsyncThunk(
   'users/getPage',
   async (limit, { rejectWithValue }) => {
     try {
-      const data = fetchUsers(limit);
-      console.log(data);
+      console.log(limit + ' items per page in thunk');
+
+      const data = await fetchUsers(limit);
       return data;
     } catch (err) {
-      return rejectWithValue(err.message);
+      console.log(rejectWithValue(err.message));
+      return;
     }
   }
 );
