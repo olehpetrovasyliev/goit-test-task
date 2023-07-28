@@ -27,7 +27,7 @@ const usersSlice = createSlice({
     builder
       .addCase(fetchUsersPageThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.users = payload;
+        state.users = [...state.users, ...payload];
       })
       .addMatcher(action => action.type.endsWith('/pending'), loading)
       .addMatcher(action => action.type.endsWith('/rejected'), error);

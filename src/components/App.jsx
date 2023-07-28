@@ -12,7 +12,7 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(fetchUsersPageThunk(page));
-  }, [dispatch, page]);
+  }, [page]);
   const handleClick = () => {
     setPage(prev => prev + 1);
     console.log(page);
