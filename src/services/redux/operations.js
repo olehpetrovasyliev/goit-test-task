@@ -4,11 +4,11 @@ import { fetchUsers, followUser, unfollowUser } from 'services/api';
 
 export const fetchUsersPageThunk = createAsyncThunk(
   'users/getPage',
-  async (limit, { rejectWithValue }) => {
+  async (page, { rejectWithValue }) => {
     try {
-      console.log(limit + ' items per page in thunk');
+      console.log(page + ' is  current page again');
 
-      const data = await fetchUsers(limit);
+      const data = await fetchUsers(page);
       return data;
     } catch (err) {
       console.log(rejectWithValue(err.message));

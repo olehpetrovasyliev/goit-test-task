@@ -8,11 +8,10 @@ import { useEffect } from 'react';
 export const App = () => {
   const users = useSelector(selectUsers);
   const dispatch = useDispatch();
-  let limit = 3;
 
   useEffect(() => {
-    dispatch(() => fetchUsersPageThunk(limit));
-  }, [dispatch, limit]);
+    dispatch(fetchUsersPageThunk(1));
+  }, [dispatch]);
 
   return <CardsList arr={users} />;
 };
