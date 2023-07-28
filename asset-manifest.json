@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/olehpetrovasyliev/goit-test-task/static/css/main.0096c95e.css",
-    "main.js": "/olehpetrovasyliev/goit-test-task/static/js/main.e620c8be.js",
+    "main.js": "/olehpetrovasyliev/goit-test-task/static/js/main.bba81870.js",
     "index.html": "/olehpetrovasyliev/goit-test-task/index.html",
     "main.0096c95e.css.map": "/olehpetrovasyliev/goit-test-task/static/css/main.0096c95e.css.map",
-    "main.e620c8be.js.map": "/olehpetrovasyliev/goit-test-task/static/js/main.e620c8be.js.map"
+    "main.bba81870.js.map": "/olehpetrovasyliev/goit-test-task/static/js/main.bba81870.js.map"
   },
   "entrypoints": [
     "static/css/main.0096c95e.css",
-    "static/js/main.e620c8be.js"
+    "static/js/main.bba81870.js"
   ]
 }
