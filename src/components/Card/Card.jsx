@@ -3,15 +3,18 @@ import React from 'react';
 
 const Card = ({ user }) => {
   return (
-    <li>
+    <li key={user.id}>
       <div>
         <img src="../../img/card_picture_1x.png" alt="decoration" />
       </div>
-      <span> {/* <img src={user.avatar} alt="avatar" /> */}</span>
+      <span>
+        {' '}
+        <img src={user.avatar} alt="avatar" />
+      </span>
       <div>
         <ul>
-          {/* <li>{user.tweets} tweets</li> */}
-          {/* <li>{user.followers} followers</li> */}
+          <li>{user.tweets} tweets</li>
+          <li>{user.followers} followers</li>
         </ul>
         <FollowingButton />
       </div>

@@ -1,3 +1,4 @@
+import CardsList from './CadsList/CardsList';
 import Card from './Card/Card';
 
 export const App = () => {
@@ -13,7 +14,7 @@ export const App = () => {
       }}
     >
       React homework template
-      <Card />
+      <CardsList />
     </div>
   );
 };
