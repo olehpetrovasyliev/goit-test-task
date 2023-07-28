@@ -1,8 +1,6 @@
-import { fetchUsers } from 'services/api';
 import Card from './Card/Card';
 
 export const App = () => {
-  fetchUsers(6);
   return (
     <div
       style={{

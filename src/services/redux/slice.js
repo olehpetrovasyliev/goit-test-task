@@ -1,5 +1,5 @@
-const { createSlice } = require('@reduxjs/toolkit');
-const { fetchAllUsers } = require('./operations');
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchAllUsers, fetchUsersPageThunk } from './operations';
 
 const initialState = {
   users: {
@@ -27,7 +27,7 @@ const usersSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(fetchAllUsers.fulfilled, (state, { payload }) => {
+      .addCase(fetchUsersPageThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.users = payload;
       })
