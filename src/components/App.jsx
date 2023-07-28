@@ -1,9 +1,8 @@
-import { getUsers } from 'services/api';
+import { fetchUsers } from 'services/api';
 import Card from './Card/Card';
 
 export const App = () => {
-  const test = async () => console.log(await getUsers(6));
-  test();
+  fetchUsers(6);
   return (
     <div
       style={{
