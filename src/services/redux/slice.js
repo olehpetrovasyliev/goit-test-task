@@ -2,9 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchAllUsers, fetchUsersPageThunk } from './operations';
 
 const initialState = {
-  users: {
-    users: [],
-  },
+  users: [],
   filter: '',
   isLoading: false,
   error: null,
@@ -35,3 +33,4 @@ const usersSlice = createSlice({
       .addMatcher(action => action.type.endsWith('/rejected'), error);
   },
 });
+export const usersReducer = usersSlice.reducer;
