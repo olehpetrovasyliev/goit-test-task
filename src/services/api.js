@@ -4,11 +4,10 @@ const instance = axios.create({
   baseURL: 'https://64ac07459edb4181202f008d.mockapi.io/users',
 });
 
-export const fetchUsers = page => {
+export const fetchUsers = limit => {
   const { data } = instance.get('', {
     params: {
-      limit: 3,
-      page,
+      limit,
     },
   });
   // console.log(data);

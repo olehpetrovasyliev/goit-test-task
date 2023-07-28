@@ -1,4 +1,4 @@
-import FollowingButton from 'components/FollowingButton/FollowingButton';
+import Button from 'components/Button/Button';
 import React from 'react';
 
 const Card = ({ user }) => {
@@ -16,7 +16,7 @@ const Card = ({ user }) => {
           <li>{user.tweets} tweets</li>
           <li>{user.followers} followers</li>
         </ul>
-        <FollowingButton />
+        <Button />
       </div>
     </li>
   );

@@ -3,10 +3,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchUsers, followUser, unfollowUser } from 'services/api';
 
 export const fetchUsersPageThunk = createAsyncThunk(
-  'users/getAll',
-  async (page, { rejectWithValue }) => {
+  'users/getPage',
+  async (limit, { rejectWithValue }) => {
     try {
-      const data = fetchUsers(page);
+      const data = fetchUsers(limit);
+      console.log(data);
       return data;
     } catch (err) {
       return rejectWithValue(err.message);
