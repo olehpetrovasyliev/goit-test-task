@@ -1,7 +1,11 @@
 import React from 'react';
 
-const FollowingButton = () => {
-  return <button type="button">follow</button>;
+const FollowingButton = ({ func, text }) => {
+  return (
+    <button type="button" onClick={func}>
+      {text}
+    </button>
+  );
 };
 
 export default FollowingButton;

@@ -1,19 +1,22 @@
+import FollowingButton from 'components/FollowingButton/FollowingButton';
 import React from 'react';
 
 const Card = ({ user }) => {
   return (
-    <li>
+    <li
+    //   key={user.id}
+    >
       <div>
         {/* <picture srcset></picture> */}
-        <img src="./../../../assets/card_picture_1x.png" alt="decoration" />
+        <img src="../../img/card_picture_1x.png" alt="decoration" />
       </div>
       <span>{/* <img src={user.avatar} alt="avatar" /> */}</span>
       <div>
         <ul>
-          <li>{user.tweets} tweets</li>
-          <li>{user.followers} followers</li>
+          {/* <li>{user.tweets} tweets</li>
+          <li>{user.followers} followers</li> */}
         </ul>
-        <button></button>
+        <FollowingButton />
       </div>
     </li>
   );
