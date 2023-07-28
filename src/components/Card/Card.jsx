@@ -1,8 +1,12 @@
 import { nanoid } from '@reduxjs/toolkit';
 import Button from 'components/Button/Button';
-import React from 'react';
+import React, { useState } from 'react';
 
 const Card = ({ user }) => {
+  const [isFollowing, setIsFollowing] = useState(false);
+  const handleClick = () => {
+    setIsFollowing(prev => !prev);
+  };
   return (
     <li>
       <div>
@@ -17,7 +21,7 @@ const Card = ({ user }) => {
           <li>{user.tweets} tweets</li>
           <li>{user.followers} followers</li>
         </ul>
-        <Button />
+        <Button func={handleClick} text={isFollowing ? 'unfollow' : 'follow'} />
       </div>
     </li>
   );

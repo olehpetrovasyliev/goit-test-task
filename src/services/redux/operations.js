@@ -6,12 +6,10 @@ export const fetchUsersPageThunk = createAsyncThunk(
   'users/getPage',
   async (page, { rejectWithValue }) => {
     try {
-      console.log(page + ' is  current page again');
-
       const data = await fetchUsers(page);
       return data;
     } catch (err) {
-      console.log(rejectWithValue(err.message));
+      return rejectWithValue(err.message);
       return;
     }
   }

@@ -5,14 +5,13 @@ const instance = axios.create({
 });
 
 export const fetchUsers = async page => {
-  console.log(page + ' is current page');
   const { data } = await instance.get('', {
     params: {
       limit: 3,
       page,
     },
   });
-  // console.log(data);
+
   return data;
 };
 export const followUser = (instance.post = user => user.followers++);
