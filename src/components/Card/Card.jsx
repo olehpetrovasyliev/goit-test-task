@@ -16,13 +16,21 @@ import { useDispatch } from 'react-redux';
 
 const Card = ({ user }) => {
   const [isFollowing, setIsFollowing] = useState(false);
+  const [userFollowers, setUserFollowers] = useState(user.followers);
+
   const dispatch = useDispatch();
   const handleClick = () => {
     setIsFollowing(prev => !prev);
+    console.log('was' + userFollowers);
+
+    // isFollowing
+    //   ? dispatch(unfollowUserThunk(user))
+    //   : dispatch(followUserThunk(user));
+    // console.log(user.followers);
     isFollowing
-      ? dispatch(unfollowUserThunk(user))
-      : dispatch(followUserThunk(user));
-    console.log(user.followers);
+      ? setUserFollowers(prev => prev - 1)
+      : setUserFollowers(prev => prev + 1);
+    console.log('now' + userFollowers);
   };
   return (
     <StyledCard>
@@ -37,7 +45,7 @@ const Card = ({ user }) => {
 
       <div>
         <CardText>{user.tweets} tweets</CardText>
-        <CardText>{user.followers} followers</CardText>
+        <CardText>{userFollowers} followers</CardText>
 
         <Button
           func={handleClick}
