@@ -1,12 +1,16 @@
 import { styled } from 'styled-components';
-import Button from './Button';
 
-export const StyledButton = styled(Button)`
+export const StyledButton = styled.button`
   display: flex;
   width: 196px;
   height: 50px;
   justify-content: center;
   align-items: center;
-  /* background:  */
+  background: ${props => props.background};
   color: #373737;
+  border-radius: 10px;
+  text-transform: uppercase;
+  &:hover {
+    cursor: pointer;
+  }
 `;

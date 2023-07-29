@@ -6,21 +6,29 @@ import {
   AvatarWrapper,
   CardText,
   CardWrapper,
+  Image,
   Line,
   StyledCard,
 } from './Card.styled';
+import { followUserThunk, unfollowUserThunk } from 'services/redux/operations';
+import { useDispatch } from 'react-redux';
 // import { StyledButton } from 'components/Button/Buttons.styled';
 
 const Card = ({ user }) => {
   const [isFollowing, setIsFollowing] = useState(false);
+  const dispatch = useDispatch();
   const handleClick = () => {
     setIsFollowing(prev => !prev);
+    isFollowing
+      ? dispatch(unfollowUserThunk(user))
+      : dispatch(followUserThunk(user));
+    console.log(user.followers);
   };
   return (
     <StyledCard>
       {/* <div> */}
       <div>
-        <img src="../../img/card_picture_1x.png" alt="decoration" />
+        <Image src="../../img/card_picture_1x.png" alt="decoration" />
       </div>
       <Line />
       <AvatarWrapper>
@@ -31,7 +39,11 @@ const Card = ({ user }) => {
         <CardText>{user.tweets} tweets</CardText>
         <CardText>{user.followers} followers</CardText>
 
-        <Button func={handleClick} text={isFollowing ? 'unfollow' : 'follow'} />
+        <Button
+          func={handleClick}
+          text={isFollowing ? 'following' : 'follow'}
+          background={!isFollowing ? '#EBD8FF' : '#5CD3A8'}
+        />
       </div>
       {/* </div> */}
     </StyledCard>

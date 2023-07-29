@@ -37,13 +37,14 @@ export const Line = styled.span`
     0px 3.4369285106658936px 3.4369285106658936px 0px rgba(0, 0, 0, 0.06),
     0px -1.7184642553329468px 3.4369285106658936px 0px #ae7be3 inset;
   /* position: relative; */
+  position: absolute;
 `;
 
 export const AvatarWrapper = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* position: absolute; */
+  position: absolute;
   width: 80px;
   height: 80px;
   border-radius: 100px;
@@ -52,6 +53,8 @@ export const AvatarWrapper = styled.span`
     0px 3.4369285106658936px 3.4369285106658936px 0px rgba(0, 0, 0, 0.06),
     0px -1.7184642553329468px 3.4369285106658936px 0px #ae7be3 inset;
 `;
-export const CardWrapper = styled.div`
-  position: relative;
+export const Image = styled.img`
+  width: 308px;
+  height: 168px;
+  margin-bottom: 88px;
 `;

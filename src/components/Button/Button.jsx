@@ -1,10 +1,11 @@
 import React from 'react';
+import { StyledButton } from './Buttons.styled';
 
-const Button = ({ func, text }) => {
+const Button = ({ func, text, background }) => {
   return (
-    <button type="button" onClick={func}>
+    <StyledButton type="button" onClick={func} background={background}>
       {text}
-    </button>
+    </StyledButton>
   );
 };
 
