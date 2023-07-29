@@ -21,8 +21,6 @@ const Card = ({ user }) => {
   const dispatch = useDispatch();
   const handleClick = () => {
     setIsFollowing(prev => !prev);
-    console.log('was' + userFollowers);
-
     // isFollowing
     //   ? dispatch(unfollowUserThunk(user))
     //   : dispatch(followUserThunk(user));
@@ -30,7 +28,6 @@ const Card = ({ user }) => {
     isFollowing
       ? setUserFollowers(prev => prev - 1)
       : setUserFollowers(prev => prev + 1);
-    console.log('now' + userFollowers);
   };
   return (
     <StyledCard>
