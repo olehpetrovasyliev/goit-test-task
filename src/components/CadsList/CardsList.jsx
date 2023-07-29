@@ -1,19 +1,18 @@
 import { nanoid } from '@reduxjs/toolkit';
 import Card from 'components/Card/Card';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUsers } from 'services/redux/selectors';
+import { useDispatch } from 'react-redux';
+import { StyledCardsList } from './CardList.styled';
 
 const CardsList = ({ arr }) => {
   const dispatch = useDispatch();
-  // const users = useSelector(selectUsers);
 
   return (
-    <ul>
+    <StyledCardsList>
       {arr.map(el => (
-        <Card user={el} key={nanoid()} />
+        <Card user={el} key={el.id} />
       ))}
-    </ul>
+    </StyledCardsList>
   );
 };
 
