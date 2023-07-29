@@ -10,6 +10,9 @@ export const StyledButton = styled.button`
   color: #373737;
   border-radius: 10px;
   text-transform: uppercase;
+  margin-right: auto;
+  margin-left: auto;
+  font-weight: 600;
   &:hover {
     cursor: pointer;
   }

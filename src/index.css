@@ -7,14 +7,26 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: radial-gradient(
-    circle,
-    rgb(50, 78, 201) 0%,
-    rgb(219, 226, 121) 100%
+  background: repeating-linear-gradient(
+    45deg,
+    #364bd3,
+    #8218ac 5%,
+    #086fcf 5%,
+    #761892 10%
   );
+  background-size: 100px 100px;
+  animation: move-it 3s linear infinite;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+@keyframes move-it {
+  0% {
+    background-position: initial;
+  }
+  100% {
+    background-position: 100px 0px;
+  }
 }

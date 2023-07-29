@@ -21,6 +21,12 @@ export const CardText = styled.h3`
   font-family: 'Montserrat', sans-serif;
   color: #ebd8ff;
   font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 16px;
+  &:nth-child(2) {
+    margin-bottom: 26px;
+    color: #000;
+  }
 `;
 export const Avatar = styled.img`
   width: 62px;
