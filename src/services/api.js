@@ -14,5 +14,3 @@ export const fetchUsers = async page => {
 
   return data;
 };
-export const followUser = (instance.post = user => user.followers++);
-export const unfollowUser = (instance.post = user => user.followers--);

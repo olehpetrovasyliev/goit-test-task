@@ -14,25 +14,3 @@ export const fetchUsersPageThunk = createAsyncThunk(
     }
   }
 );
-
-export const followUserThunk = createAsyncThunk(
-  'users/follow',
-  async (user, { rejectWithValue }) => {
-    try {
-      followUser(user);
-    } catch (err) {
-      return rejectWithValue(err.message);
-    }
-  }
-);
-
-export const unfollowUserThunk = createAsyncThunk(
-  'users/unfollow',
-  async (user, { rejectWithValue }) => {
-    try {
-      unfollowUser(user);
-    } catch (err) {
-      return rejectWithValue(err.message);
-    }
-  }
-);

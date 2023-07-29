@@ -28,6 +28,7 @@ const Card = ({ user }) => {
     isFollowing
       ? setUserFollowers(prev => prev - 1)
       : setUserFollowers(prev => prev + 1);
+    localStorage.setItem(JSON.stringify('user', user));
   };
   return (
     <StyledCard>
