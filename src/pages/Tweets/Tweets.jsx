@@ -1,10 +1,43 @@
+import { useDispatch, useSelector } from 'react-redux';
+
+import { selectUsers } from 'services/redux/selectors';
+import { fetchUsersPageThunk } from 'services/redux/operations';
+import { useEffect, useState } from 'react';
+
+import { useRef } from 'react';
 import CardsList from 'components/CadsList/CardsList';
-import React, { useEffect } from 'react';
-import { fetchUsers } from 'services/api';
+import Button from 'components/Button/Button';
 
-const Tweets = () => {
-  useEffect(() => {}, []);
-  // return <CardsList arr={} />;
+export const TweetsPage = () => {
+  const users = useSelector(selectUsers);
+  const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    dispatch(fetchUsersPageThunk(page));
+  }, [dispatch, page]);
+  const handleClick = () => {
+    setPage(prev => prev + 1);
+  };
+  return (
+    <>
+      <CardsList arr={users} />;
+      <Button
+        type="button"
+        func={handleClick}
+        text={'Load more'}
+        background="radial-gradient(
+    circle,
+    rgb(50, 78, 201) 0%,
+    rgb(219, 226, 121) 100%
+  )"
+      />
+    </>
+  );
 };
-
-export default Tweets;
+export default TweetsPage;

@@ -1,10 +1,18 @@
 import React from 'react';
+import { Suspense } from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const Layout = () => {
   return (
-    <nav>
-      <h3>hello from layout</h3>
-    </nav>
+    <Suspense fallback={null}>
+      <header>
+        <nav>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/tweets">Tweets</NavLink>
+        </nav>
+      </header>
+      <Outlet />
+    </Suspense>
   );
 };
 
