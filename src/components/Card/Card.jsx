@@ -16,36 +16,27 @@ import {
   StyledCard,
 } from './Card.styled';
 
-import { useRef } from 'react';
-
 const Card = ({ user }) => {
+  const [updatedUser, setUpdatedUser] = useState({ ...user });
   const [isFollowing, setIsFollowing] = useState(false);
   const [userFollowers, setUserFollowers] = useState(user.followers);
 
-  const isFirstRender = useRef(true);
-
   useEffect(() => {
-    // if (isFirstRender.current) {
-    //   isFirstRender.current = false;
-    //   return;
-    // }
-    // setTimeout(() => {
-    localStorage.setItem(
-      String(user.id),
-      JSON.stringify({ ...user, followers: userFollowers, isFollowing })
-    );
-    // }, 0);
+    setTimeout(() => {
+      localStorage.setItem(
+        String(user.id),
+        JSON.stringify({ ...user, followers: userFollowers, isFollowing })
+      );
+    }, 0);
   }, [user.id, userFollowers, isFollowing]);
 
-  const updatedUser = JSON.parse(localStorage.getItem(String(user.id)));
-
   useEffect(() => {
-    // Retrieve data from localStorage and update the state
     const updatedUser = JSON.parse(localStorage.getItem(String(user.id)));
     if (updatedUser) {
       setIsFollowing(updatedUser.isFollowing);
       setUserFollowers(updatedUser.followers);
     }
+    setUpdatedUser(JSON.parse(localStorage.getItem(String(user.id))));
   }, [user.id]);
 
   const handleClick = () => {
@@ -70,22 +61,18 @@ const Card = ({ user }) => {
 
       <div>
         <CardText>
-          {updatedUser
-            ? updatedUser.tweets.toLocaleString()
-            : user.tweets.toLocaleString()}
+          {user.tweets.toLocaleString()}
           tweets
         </CardText>
         <CardText>
-          {updatedUser
-            ? updatedUser.followers.toLocaleString()
-            : userFollowers.toLocaleString()}
+          {userFollowers.toLocaleString()}
           followers
         </CardText>
 
         <Button
           func={handleClick}
-          text={updatedUser?.isFollowing ? 'following' : 'follow'}
-          background={updatedUser.isFollowing ? '#5CD3A8' : '#EBD8FF'}
+          text={isFollowing ? 'following' : 'follow'}
+          background={isFollowing ? '#5CD3A8' : '#EBD8FF'}
         />
       </div>
     </StyledCard>
