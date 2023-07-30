@@ -3,7 +3,7 @@ import { fetchUsersPageThunk } from './operations';
 
 const initialState = {
   users: [],
-  filter: '',
+  page: 1,
   isLoading: false,
   error: null,
 };
@@ -18,7 +18,11 @@ const loading = state => {
 const usersSlice = createSlice({
   name: 'twitterUsers',
   initialState,
-
+  reducers: {
+    nextPage: (state, { payload }) => {
+      state.page += payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchUsersPageThunk.fulfilled, (state, { payload }) => {
@@ -30,3 +34,4 @@ const usersSlice = createSlice({
   },
 });
 export const usersReducer = usersSlice.reducer;
+export const { nextPage } = usersSlice.actions;

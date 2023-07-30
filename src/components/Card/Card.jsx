@@ -46,8 +46,6 @@ const Card = ({ user }) => {
       : setUserFollowers(prev => prev + 1);
   };
 
-  console.log(updatedUser);
-
   return (
     <StyledCard>
       <ImageWrapper>

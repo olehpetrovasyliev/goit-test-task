@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectUsers } from 'services/redux/selectors';
+import { selectPage, selectUsers } from 'services/redux/selectors';
 import { fetchUsersPageThunk } from 'services/redux/operations';
 import { useEffect, useState } from 'react';
 
@@ -8,26 +8,34 @@ import { useRef } from 'react';
 import CardsList from 'components/CadsList/CardsList';
 import Button from 'components/Button/Button';
 import Filter from 'components/Filter/Filter';
+import { nextPage } from 'services/redux/slice';
 
 export const TweetsPage = () => {
   const users = useSelector(selectUsers);
   const dispatch = useDispatch();
-  const [page, setPage] = useState(1);
+  const page = useSelector(selectPage);
   const isFirstRender = useRef(true);
 
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
+
       return;
     }
+
+    if (page > 1 || users.length >= 3) {
+      return;
+    }
+
     dispatch(fetchUsersPageThunk(page));
   }, [dispatch, page]);
+
   const handleClick = () => {
-    setPage(prev => prev + 1);
+    dispatch(nextPage(1));
+    dispatch(fetchUsersPageThunk(page + 1));
   };
   return (
     <>
-      <Filter />
       <CardsList arr={users} />;
       <Button
         type="button"
