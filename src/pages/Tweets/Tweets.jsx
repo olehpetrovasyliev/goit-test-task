@@ -19,14 +19,11 @@ export const TweetsPage = () => {
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
-
       return;
     }
-
-    if (page > 1 || users.length >= 3) {
+    if (users.length >= 3) {
       return;
     }
-
     dispatch(fetchUsersPageThunk(page));
   }, [dispatch, page]);
 
@@ -36,6 +33,7 @@ export const TweetsPage = () => {
   };
   return (
     <>
+      <Filter />
       <CardsList arr={users} />;
       <Button
         type="button"
