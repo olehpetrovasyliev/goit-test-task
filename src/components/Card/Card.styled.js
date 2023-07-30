@@ -64,3 +64,11 @@ export const Image = styled.img`
   height: 168px;
   margin-bottom: 88px;
 `;
+export const ImageWrapper = styled.div`
+  position: relative;
+`;
+export const Logo = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+`;

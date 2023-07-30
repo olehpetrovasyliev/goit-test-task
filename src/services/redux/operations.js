@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { fetchUsers, followUser, unfollowUser } from 'services/api';
+import { fetchUsers } from 'services/api';
 
 export const fetchUsersPageThunk = createAsyncThunk(
   'users/getPage',

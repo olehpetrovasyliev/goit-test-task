@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { useRef } from 'react';
 import CardsList from 'components/CadsList/CardsList';
 import Button from 'components/Button/Button';
+import Filter from 'components/Filter/Filter';
 
 export const TweetsPage = () => {
   const users = useSelector(selectUsers);
@@ -26,6 +27,7 @@ export const TweetsPage = () => {
   };
   return (
     <>
+      <Filter />
       <CardsList arr={users} />;
       <Button
         type="button"

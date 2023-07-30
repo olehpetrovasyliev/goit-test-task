@@ -1,49 +1,63 @@
 import { nanoid } from '@reduxjs/toolkit';
 import Button from 'components/Button/Button';
-import React, { useState } from 'react';
+import decor from '../../img/card_picture_1x.png';
+import logo from '../../img/Logo.png';
+
+import React, { useState, useEffect } from 'react';
 import {
   Avatar,
   AvatarWrapper,
   CardText,
   CardWrapper,
   Image,
+  ImageWrapper,
   Line,
+  Logo,
   StyledCard,
 } from './Card.styled';
-import { followUserThunk, unfollowUserThunk } from 'services/redux/operations';
+
 import { useDispatch } from 'react-redux';
-// import { StyledButton } from 'components/Button/Buttons.styled';
+import { useRef } from 'react';
 
 const Card = ({ user }) => {
   const [isFollowing, setIsFollowing] = useState(false);
   const [userFollowers, setUserFollowers] = useState(user.followers);
-
   const dispatch = useDispatch();
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    localStorage.setItem(
+      String(user.id),
+      JSON.stringify({ ...user, followers: userFollowers, isFollowing })
+    );
+  }, [isFollowing]);
+
+  const updatedUser = JSON.parse(localStorage.getItem(String(user.id)));
+  console.log(updatedUser);
   const handleClick = () => {
     setIsFollowing(prev => !prev);
-    // isFollowing
-    //   ? dispatch(unfollowUserThunk(user))
-    //   : dispatch(followUserThunk(user));
-    // console.log(user.followers);
     isFollowing
       ? setUserFollowers(prev => prev - 1)
       : setUserFollowers(prev => prev + 1);
-    localStorage.setItem(JSON.stringify('user', user));
   };
   return (
     <StyledCard>
-      {/* <div> */}
-      <div>
-        <Image src="../../img/card_picture_1x.png" alt="decoration" />
-      </div>
+      <ImageWrapper>
+        <Image src={decor} alt="decoration" />
+        <Logo src={logo} alt="GoIT logo" />
+      </ImageWrapper>
       <Line />
       <AvatarWrapper>
         <Avatar src={user.avatar} alt="avatar" />
       </AvatarWrapper>
 
       <div>
-        <CardText>{user.tweets} tweets</CardText>
-        <CardText>{userFollowers} followers</CardText>
+        <CardText>{user.tweets.toLocaleString()} tweets</CardText>
+        <CardText>{userFollowers.toLocaleString()} followers</CardText>
 
         <Button
           func={handleClick}
@@ -51,7 +65,6 @@ const Card = ({ user }) => {
           background={!isFollowing ? '#EBD8FF' : '#5CD3A8'}
         />
       </div>
-      {/* </div> */}
     </StyledCard>
   );
 };
