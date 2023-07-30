@@ -5,8 +5,6 @@ import { useDispatch } from 'react-redux';
 import { StyledCardsList } from './CardList.styled';
 
 const CardsList = ({ arr }) => {
-  const dispatch = useDispatch();
-
   return (
     <StyledCardsList>
       {arr.map(el => (

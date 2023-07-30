@@ -18,11 +18,7 @@ const loading = state => {
 const usersSlice = createSlice({
   name: 'twitterUsers',
   initialState,
-  reducers: {
-    setFilter: (state, { payload }) => {
-      state.filter = payload;
-    },
-  },
+
   extraReducers: builder => {
     builder
       .addCase(fetchUsersPageThunk.fulfilled, (state, { payload }) => {
