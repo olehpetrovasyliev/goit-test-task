@@ -16,34 +16,47 @@ import {
   StyledCard,
 } from './Card.styled';
 
-import { useDispatch } from 'react-redux';
 import { useRef } from 'react';
 
 const Card = ({ user }) => {
   const [isFollowing, setIsFollowing] = useState(false);
   const [userFollowers, setUserFollowers] = useState(user.followers);
-  const dispatch = useDispatch();
+
   const isFirstRender = useRef(true);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
+    // if (isFirstRender.current) {
+    //   isFirstRender.current = false;
+    //   return;
+    // }
+    // setTimeout(() => {
     localStorage.setItem(
       String(user.id),
       JSON.stringify({ ...user, followers: userFollowers, isFollowing })
     );
-  }, [isFollowing]);
+    // }, 0);
+  }, [user.id, userFollowers, isFollowing]);
 
   const updatedUser = JSON.parse(localStorage.getItem(String(user.id)));
-  console.log(updatedUser);
+
+  useEffect(() => {
+    // Retrieve data from localStorage and update the state
+    const updatedUser = JSON.parse(localStorage.getItem(String(user.id)));
+    if (updatedUser) {
+      setIsFollowing(updatedUser.isFollowing);
+      setUserFollowers(updatedUser.followers);
+    }
+  }, [user.id]);
+
   const handleClick = () => {
     setIsFollowing(prev => !prev);
     isFollowing
       ? setUserFollowers(prev => prev - 1)
       : setUserFollowers(prev => prev + 1);
   };
+
+  console.log(updatedUser);
+
   return (
     <StyledCard>
       <ImageWrapper>
@@ -56,13 +69,23 @@ const Card = ({ user }) => {
       </AvatarWrapper>
 
       <div>
-        <CardText>{user.tweets.toLocaleString()} tweets</CardText>
-        <CardText>{userFollowers.toLocaleString()} followers</CardText>
+        <CardText>
+          {updatedUser
+            ? updatedUser.tweets.toLocaleString()
+            : user.tweets.toLocaleString()}
+          tweets
+        </CardText>
+        <CardText>
+          {updatedUser
+            ? updatedUser.followers.toLocaleString()
+            : userFollowers.toLocaleString()}
+          followers
+        </CardText>
 
         <Button
           func={handleClick}
-          text={isFollowing ? 'following' : 'follow'}
-          background={!isFollowing ? '#EBD8FF' : '#5CD3A8'}
+          text={updatedUser?.isFollowing ? 'following' : 'follow'}
+          background={updatedUser.isFollowing ? '#5CD3A8' : '#EBD8FF'}
         />
       </div>
     </StyledCard>
