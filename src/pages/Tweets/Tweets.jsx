@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { selectPage, selectUsers } from 'services/redux/selectors';
 import { fetchUsersPageThunk } from 'services/redux/operations';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { useRef } from 'react';
 import CardsList from 'components/CadsList/CardsList';
@@ -25,7 +25,7 @@ export const TweetsPage = () => {
       return;
     }
     dispatch(fetchUsersPageThunk(page));
-  }, [dispatch, page]);
+  }, [dispatch, users.length]);
 
   const handleClick = () => {
     dispatch(nextPage(1));

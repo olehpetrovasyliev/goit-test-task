@@ -17,7 +17,9 @@ import {
 } from './Card.styled';
 
 const Card = ({ user }) => {
-  const [updatedUser, setUpdatedUser] = useState({ ...user });
+  const [updatedUser, setUpdatedUser] = useState(
+    JSON.parse(localStorage.getItem(String(user.id)))
+  );
   const [isFollowing, setIsFollowing] = useState(false);
   const [userFollowers, setUserFollowers] = useState(user.followers);
 
@@ -31,7 +33,6 @@ const Card = ({ user }) => {
   }, [user.id, userFollowers, isFollowing]);
 
   useEffect(() => {
-    const updatedUser = JSON.parse(localStorage.getItem(String(user.id)));
     if (updatedUser) {
       setIsFollowing(updatedUser.isFollowing);
       setUserFollowers(updatedUser.followers);

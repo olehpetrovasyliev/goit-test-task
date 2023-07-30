@@ -1,7 +1,6 @@
-import { nanoid } from '@reduxjs/toolkit';
 import Card from 'components/Card/Card';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+
 import { StyledCardsList } from './CardList.styled';
 
 const CardsList = ({ arr }) => {

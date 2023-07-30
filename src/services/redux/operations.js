@@ -10,7 +10,6 @@ export const fetchUsersPageThunk = createAsyncThunk(
       return data;
     } catch (err) {
       return rejectWithValue(err.message);
-      return;
     }
   }
 );
