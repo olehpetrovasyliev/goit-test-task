@@ -1,6 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectPage, selectUsers } from 'services/redux/selectors';
+import {
+  selectLoading,
+  selectPage,
+  selectUsers,
+} from 'services/redux/selectors';
 import { fetchUsersPageThunk } from 'services/redux/operations';
 import { useEffect } from 'react';
 
@@ -9,12 +13,16 @@ import CardsList from 'components/CadsList/CardsList';
 import Button from 'components/Button/Button';
 import Filter from 'components/Filter/Filter';
 import { nextPage } from 'services/redux/slice';
+import { useState } from 'react';
 
 export const TweetsPage = () => {
   const users = useSelector(selectUsers);
+  const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
   const page = useSelector(selectPage);
   const isFirstRender = useRef(true);
+
+  const [fiteredUsers, setFiteredUsers] = useState([]);
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -31,6 +39,7 @@ export const TweetsPage = () => {
     dispatch(nextPage(1));
     dispatch(fetchUsersPageThunk(page + 1));
   };
+  const handleChange = value => {};
   return (
     <>
       <Filter />
