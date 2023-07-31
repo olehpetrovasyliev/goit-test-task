@@ -33,27 +33,29 @@ const Card = ({ user }) => {
     );
     // }, 0);
   }, [user, userFollowers, isFollowing]);
+  // useEffect(() => {
+  // }, [user.id]);
   useEffect(() => {
     if (updatedUser) {
       setIsFollowing(updatedUser.isFollowing);
       setUserFollowers(updatedUser.followers);
     }
-    // setTimeout(() => {
-    setUpdatedUser(JSON.parse(localStorage.getItem(String(user.id))));
-    // }, 0);
-  }, [user.id]);
+  }, [updatedUser]);
 
   const handleClick = () => {
     console.log(isFollowing);
 
-    setIsFollowing(prev => !prev);
+    setTimeout(() => {
+      setIsFollowing(prev => !prev);
+    }, 0);
     console.log(isFollowing);
 
     isFollowing
       ? setUserFollowers(prev => prev - 1)
       : setUserFollowers(prev => prev + 1);
-  };
 
+    setUpdatedUser(JSON.parse(localStorage.getItem(String(user.id))));
+  };
   return (
     <StyledCard>
       <ImageWrapper>
