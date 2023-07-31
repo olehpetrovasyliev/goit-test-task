@@ -8,7 +8,7 @@ import {
 import { fetchUsersPageThunk } from 'services/redux/operations';
 import { useEffect } from 'react';
 
-import { useRef } from 'react';
+// import { useRef } from 'react';
 import CardsList from 'components/CadsList/CardsList';
 import Button from 'components/Button/Button';
 import Filter from 'components/Filter/Filter';
@@ -20,14 +20,14 @@ export const TweetsPage = () => {
   // const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
   const page = useSelector(selectPage);
-  const isFirstRender = useRef(true);
+  // const isFirstRender = useRef(true);
   // const [filteredUsers, setFilteredUsers] = useState([]);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
+    // if (isFirstRender.current) {
+    //   isFirstRender.current = false;
+    //   return;
+    // }
     if (users.length >= 3) {
       return;
     }
