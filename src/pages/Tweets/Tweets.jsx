@@ -28,10 +28,10 @@ export const TweetsPage = () => {
       isFirstRender.current = false;
       return;
     }
-    if (users.length >= 4) {
+    if (users.length >= 3) {
       return;
     }
-    dispatch(fetchUsersPageThunk(page));
+    dispatch(fetchUsersPageThunk(1));
   }, [dispatch, users, page]);
 
   // const savedUser = id => JSON.parse(localStorage.getItem(String(id)));
