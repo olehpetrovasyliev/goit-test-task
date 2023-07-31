@@ -32,7 +32,7 @@ export const TweetsPage = () => {
       return;
     }
     dispatch(fetchUsersPageThunk(1));
-  }, [dispatch, users, page]);
+  }, [dispatch]);
 
   // const savedUser = id => JSON.parse(localStorage.getItem(String(id)));
 
