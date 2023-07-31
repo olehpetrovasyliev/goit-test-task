@@ -24,10 +24,10 @@ export const TweetsPage = () => {
   // const [filteredUsers, setFilteredUsers] = useState([]);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
+    // if (isFirstRender.current) {
+    //   isFirstRender.current = false;
+    //   return;
+    // }
     if (users.length >= 3) {
       return;
     }
@@ -38,6 +38,7 @@ export const TweetsPage = () => {
 
   const handleClick = () => {
     dispatch(nextPage(1));
+
     dispatch(fetchUsersPageThunk(page + 1));
   };
   // const handleChange = value => {};
