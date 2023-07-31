@@ -27,18 +27,20 @@ const Card = ({ user }) => {
         JSON.stringify({ ...user, followers: userFollowers, isFollowing })
       );
     }, 0);
-  }, [user, userFollowers, isFollowing]);
+  }, [user.id, userFollowers, isFollowing]);
+  useEffect(() => {
+    if (updatedUser) {
+      setIsFollowing(updatedUser.isFollowing);
+      setUserFollowers(updatedUser.followers);
+    }
+    setUpdatedUser(JSON.parse(localStorage.getItem(String(user.id))));
+  }, [user]);
 
   const handleClick = () => {
     setIsFollowing(prev => !prev);
     isFollowing
       ? setUserFollowers(prev => prev - 1)
       : setUserFollowers(prev => prev + 1);
-    if (updatedUser) {
-      setIsFollowing(updatedUser.isFollowing);
-      setUserFollowers(updatedUser.followers);
-    }
-    setUpdatedUser(JSON.parse(localStorage.getItem(String(user.id))));
   };
 
   return (
