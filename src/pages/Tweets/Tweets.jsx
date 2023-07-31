@@ -24,10 +24,10 @@ export const TweetsPage = () => {
   // const [filteredUsers, setFilteredUsers] = useState([]);
 
   useEffect(() => {
-    // if (isFirstRender.current) {
-    //   isFirstRender.current = false;
-    //   return;
-    // }
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     if (users.length >= 3) {
       return;
     }
