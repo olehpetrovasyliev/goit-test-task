@@ -28,7 +28,7 @@ export const TweetsPage = () => {
       isFirstRender.current = false;
       return;
     }
-    if (users.length >= 3) {
+    if (users.length >= 4) {
       return;
     }
     dispatch(fetchUsersPageThunk(page));
