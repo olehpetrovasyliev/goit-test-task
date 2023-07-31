@@ -2,7 +2,7 @@ import Button from 'components/Button/Button';
 import decor from '../../img/card_picture_1x.png';
 import logo from '../../img/Logo.png';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Avatar,
   AvatarWrapper,
@@ -19,14 +19,19 @@ const Card = ({ user }) => {
   );
   const [isFollowing, setIsFollowing] = useState(false);
   const [userFollowers, setUserFollowers] = useState(user.followers);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      localStorage.setItem(
-        String(user.id),
-        JSON.stringify({ ...user, followers: userFollowers, isFollowing })
-      );
-    }, 0);
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    // setTimeout(() => {
+    localStorage.setItem(
+      String(user.id),
+      JSON.stringify({ ...user, followers: userFollowers, isFollowing })
+    );
+    // }, 0);
   }, [user, userFollowers, isFollowing]);
   useEffect(() => {
     if (updatedUser) {
