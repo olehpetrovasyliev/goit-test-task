@@ -24,7 +24,9 @@ export const TweetsPage = () => {
   // const [filteredUsers, setFilteredUsers] = useState([]);
 
   useEffect(() => {
-    dispatch(fetchUsersPageThunk(1));
+    setTimeout(() => {
+      dispatch(fetchUsersPageThunk(1));
+    }, 0);
   }, [dispatch]);
 
   // const savedUser = id => JSON.parse(localStorage.getItem(String(id)));
