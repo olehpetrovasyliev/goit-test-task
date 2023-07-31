@@ -33,6 +33,7 @@ const Card = ({ user }) => {
     );
     // }, 0);
   }, [user, userFollowers, isFollowing]);
+
   // useEffect(() => {
   // }, [user.id]);
   useEffect(() => {
@@ -50,10 +51,11 @@ const Card = ({ user }) => {
     }, 0);
     console.log(isFollowing);
 
-    isFollowing
-      ? setUserFollowers(prev => prev - 1)
-      : setUserFollowers(prev => prev + 1);
-
+    setTimeout(() => {
+      setUserFollowers(prevFollowers =>
+        isFollowing ? prevFollowers - 1 : prevFollowers + 1
+      );
+    }, 0);
     setUpdatedUser(JSON.parse(localStorage.getItem(String(user.id))));
   };
   return (
