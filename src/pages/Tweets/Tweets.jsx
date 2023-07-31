@@ -46,7 +46,7 @@ export const TweetsPage = () => {
       <CardsList arr={users} />;
       <Button
         type="button"
-        func={handleClick}
+        func={() => handleClick()}
         text={'Load more'}
         background="radial-gradient(
     circle,
