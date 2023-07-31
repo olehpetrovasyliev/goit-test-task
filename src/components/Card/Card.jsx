@@ -1,4 +1,3 @@
-import { nanoid } from '@reduxjs/toolkit';
 import Button from 'components/Button/Button';
 import decor from '../../img/card_picture_1x.png';
 import logo from '../../img/Logo.png';
@@ -8,7 +7,6 @@ import {
   Avatar,
   AvatarWrapper,
   CardText,
-  CardWrapper,
   Image,
   ImageWrapper,
   Line,
