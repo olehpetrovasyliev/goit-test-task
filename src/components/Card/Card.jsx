@@ -21,7 +21,6 @@ const Card = ({ user }) => {
   );
   const [isFollowing, setIsFollowing] = useState(false);
   const [userFollowers, setUserFollowers] = useState(user.followers);
-  const isFirstRender = useRef(true);
 
   useEffect(() => {
     setTimeout(() => {
