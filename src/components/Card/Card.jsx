@@ -37,6 +37,7 @@ const Card = ({ user }) => {
   }, []);
 
   const handleClick = () => {
+    console.log(isFollowing);
     setIsFollowing(prev => !prev);
     isFollowing
       ? setUserFollowers(prev => prev - 1)
