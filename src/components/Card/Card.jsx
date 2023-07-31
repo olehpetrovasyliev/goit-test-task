@@ -38,9 +38,9 @@ const Card = ({ user }) => {
       setIsFollowing(updatedUser.isFollowing);
       setUserFollowers(updatedUser.followers);
     }
-    setTimeout(() => {
-      setUpdatedUser(JSON.parse(localStorage.getItem(String(user.id))));
-    }, 0);
+    // setTimeout(() => {
+    setUpdatedUser(JSON.parse(localStorage.getItem(String(user.id))));
+    // }, 0);
   }, [user.id]);
 
   const handleClick = () => {
