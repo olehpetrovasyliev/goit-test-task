@@ -24,12 +24,7 @@ export const TweetsPage = () => {
   // const [filteredUsers, setFilteredUsers] = useState([]);
 
   useEffect(() => {
-    // if (isFirstRender.current) {
-    //   isFirstRender.current = false;
-    //   return;
-    // }
-
-    dispatch(fetchUsersPageThunk(1));
+    dispatch(() => fetchUsersPageThunk(1));
   }, [dispatch]);
 
   // const savedUser = id => JSON.parse(localStorage.getItem(String(id)));
