@@ -13,8 +13,6 @@ import {
   Logo,
   StyledCard,
 } from './Card.styled';
-import { useRef } from 'react';
-
 const Card = ({ user }) => {
   const [updatedUser, setUpdatedUser] = useState(
     JSON.parse(localStorage.getItem(String(user.id)))
