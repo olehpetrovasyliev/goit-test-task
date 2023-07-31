@@ -29,7 +29,7 @@ export const TweetsPage = () => {
     setTimeout(() => {
       dispatch(fetchUsersPageThunk(1));
     }, 0);
-  }, [dispatch]);
+  }, [dispatch, users.length]);
 
   // const savedUser = id => JSON.parse(localStorage.getItem(String(id)));
 
