@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  selectLoading,
+  // selectLoading,
   selectPage,
   selectUsers,
 } from 'services/redux/selectors';
@@ -13,7 +13,7 @@ import CardsList from 'components/CadsList/CardsList';
 import Button from 'components/Button/Button';
 import Filter from 'components/Filter/Filter';
 import { nextPage } from 'services/redux/slice';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 export const TweetsPage = () => {
   const users = useSelector(selectUsers);
@@ -34,7 +34,7 @@ export const TweetsPage = () => {
     dispatch(fetchUsersPageThunk(page));
   }, [dispatch, users.length, page]);
 
-  const savedUser = id => JSON.parse(localStorage.getItem(String(id)));
+  // const savedUser = id => JSON.parse(localStorage.getItem(String(id)));
 
   const handleClick = () => {
     dispatch(nextPage(1));
