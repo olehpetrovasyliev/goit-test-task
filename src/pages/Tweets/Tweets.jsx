@@ -17,12 +17,11 @@ import { useState } from 'react';
 
 export const TweetsPage = () => {
   const users = useSelector(selectUsers);
-  const isLoading = useSelector(selectLoading);
+  // const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
   const page = useSelector(selectPage);
   const isFirstRender = useRef(true);
-
-  const [fiteredUsers, setFiteredUsers] = useState([]);
+  // const [filteredUsers, setFilteredUsers] = useState([]);
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -33,13 +32,15 @@ export const TweetsPage = () => {
       return;
     }
     dispatch(fetchUsersPageThunk(page));
-  }, [dispatch, users.length]);
+  }, [dispatch, users.length, page]);
+
+  const savedUser = id => JSON.parse(localStorage.getItem(String(id)));
 
   const handleClick = () => {
     dispatch(nextPage(1));
     dispatch(fetchUsersPageThunk(page + 1));
   };
-  const handleChange = value => {};
+  // const handleChange = value => {};
   return (
     <>
       <Filter />
