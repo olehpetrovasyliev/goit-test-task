@@ -13,6 +13,7 @@ import {
   Logo,
   StyledCard,
 } from './Card.styled';
+import { useRef } from 'react';
 
 const Card = ({ user }) => {
   const [updatedUser, setUpdatedUser] = useState(
@@ -20,6 +21,7 @@ const Card = ({ user }) => {
   );
   const [isFollowing, setIsFollowing] = useState(false);
   const [userFollowers, setUserFollowers] = useState(user.followers);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
     setTimeout(() => {
@@ -30,19 +32,16 @@ const Card = ({ user }) => {
     }, 0);
   }, [user, userFollowers, isFollowing]);
 
-  useEffect(() => {
-    if (updatedUser) {
-      setIsFollowing(updatedUser.isFollowing);
-      setUserFollowers(updatedUser.followers);
-    }
-    setUpdatedUser(JSON.parse(localStorage.getItem(String(user.id))));
-  }, [user]);
-
   const handleClick = () => {
     setIsFollowing(prev => !prev);
     isFollowing
       ? setUserFollowers(prev => prev - 1)
       : setUserFollowers(prev => prev + 1);
+    if (updatedUser) {
+      setIsFollowing(updatedUser.isFollowing);
+      setUserFollowers(updatedUser.followers);
+    }
+    setUpdatedUser(JSON.parse(localStorage.getItem(String(user.id))));
   };
 
   return (
