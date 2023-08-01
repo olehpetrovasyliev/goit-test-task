@@ -6,7 +6,7 @@ import {
   selectUsers,
 } from 'services/redux/selectors';
 import { fetchUsersPageThunk } from 'services/redux/operations';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import CardsList from 'components/CadsList/CardsList';
 import Button from 'components/Button/Button';
@@ -17,13 +17,15 @@ import { useNavigate } from 'react-router';
 import { TweetsPageWrapper } from './Tweets.syled';
 
 export const TweetsPage = () => {
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [filterValue, setFilterValue] = useState('all');
+
   const users = useSelector(selectUsers);
   const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
   const page = useSelector(selectPage);
   const navigate = useNavigate();
-
-  const [filteredUsers, setFilteredUsers] = useState([]);
+  const prevFilterValue = useRef(filterValue);
 
   useEffect(() => {
     if (users.length >= 3) {
@@ -41,6 +43,28 @@ export const TweetsPage = () => {
 
   const followingUsers = savedUsers.filter(user => user.isFollowing === true);
 
+  useEffect(() => {
+    if (prevFilterValue.current === filterValue) {
+      // Filter value has not changed, no need to update the filtered users.
+      return;
+    }
+
+    prevFilterValue.current = filterValue;
+    if (filterValue === 'all') {
+      setFilteredUsers([]);
+      // return;
+    }
+    if (filterValue === 'follow') {
+      setFilteredUsers([...usersToFollow]);
+      // return;
+    }
+    if (filterValue === 'followings') {
+      setFilteredUsers([...followingUsers]);
+      console.log(followingUsers);
+      // return;
+    }
+  }, [filterValue]);
+
   // const followingUsers = savedIds;
 
   const handleClick = () => {
@@ -52,21 +76,18 @@ export const TweetsPage = () => {
   };
 
   const handleChange = ({ target }) => {
-    if (target.value === 'all') {
-      setFilteredUsers([]);
-    }
-    if (target.value === 'follow') {
-      // setTimeout(() => {
-      setFilteredUsers([...usersToFollow]);
-      console.log(usersToFollow);
-      // }, 0);
-    }
-    if (target.value === 'followings') {
-      // setTimeout(() => {
-      setFilteredUsers([...followingUsers]);
-      console.log(followingUsers);
-      // }, 0);
-    }
+    // if (target.value === 'all') {
+    //   setFilteredUsers([]);
+    // }
+    // if (target.value === 'follow') {
+    //   setFilteredUsers([...usersToFollow]);
+    //   console.log(usersToFollow);
+    // }
+    // if (target.value === 'followings') {
+    //   setFilteredUsers([...followingUsers]);
+    //   console.log(followingUsers);
+    // }
+    setFilterValue(target.value);
   };
   return (
     <>
