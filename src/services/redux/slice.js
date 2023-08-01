@@ -8,11 +8,11 @@ const initialState = {
   error: null,
 };
 const error = (state, { payload }) => {
-  state.loading = false;
+  state.isLoading = false;
   state.error = payload;
 };
 const loading = state => {
-  state.loading = true;
+  state.isLoading = true;
 };
 
 const usersSlice = createSlice({
