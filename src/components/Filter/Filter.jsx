@@ -1,13 +1,14 @@
 import React from 'react';
+import { Option, Select } from './Filter.styled';
 
 const Filter = ({ func }) => {
   return (
-    <select name="filter" defaultValue="all" onChange={func}>
-      <option value="all">All</option>
-      <option value="follow">Follow</option>
+    <Select name="filter" defaultValue="all" onChange={func}>
+      <Option value="all">All</Option>
+      <Option value="follow">Follow</Option>
 
-      <option value="followings">Followings</option>
-    </select>
+      <Option value="followings">Followings</Option>
+    </Select>
   );
 };
 

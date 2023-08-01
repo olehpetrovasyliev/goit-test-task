@@ -19,7 +19,6 @@ export const NavWrapper = styled.nav`
 export const StyledNavLink = styled(NavLink)`
   padding: 4px 16px;
   border-radius: 6px;
-  color: #000;
 
   background: linear-gradient(
     114.99deg,
@@ -29,6 +28,7 @@ export const StyledNavLink = styled(NavLink)`
   );
   text-decoration: none;
   box-shadow: 0 0 1px rgba(225, 225, 225, 0.5);
+  color: #000;
 
   &.active {
     color: #fff;

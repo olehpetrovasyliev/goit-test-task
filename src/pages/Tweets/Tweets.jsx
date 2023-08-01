@@ -14,7 +14,7 @@ import Filter from 'components/Filter/Filter';
 import { nextPage } from 'services/redux/slice';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { TweetsPageWrapper } from './Tweets.syled';
+import { ButtonsPageWrapper, TweetsPageWrapper } from './Tweets.syled';
 
 export const TweetsPage = () => {
   const [filteredUsers, setFilteredUsers] = useState([]);
@@ -71,15 +71,16 @@ export const TweetsPage = () => {
   };
   return (
     <>
-      <Button
-        type="button"
-        backgroung="#FFF"
-        func={() => navigate(-1)}
-        text="back"
-      />
-      <Filter func={handleChange} />
-
       <TweetsPageWrapper>
+        <ButtonsPageWrapper>
+          <Button
+            type="button"
+            backgroung="#FFF"
+            func={() => navigate(-1)}
+            text="back"
+          />
+          <Filter func={handleChange} />
+        </ButtonsPageWrapper>
         <CardsList arr={filteredUsers.length ? filteredUsers : users} />;
         {isLoading ? (
           <h1>loading</h1>
