@@ -47,7 +47,7 @@ export const TweetsPage = () => {
       console.log(followingUsers);
       // }, 0);
     }
-  }, [filterValue]);
+  }, [filterValue, followingUsers]);
 
   const savedUsers = Object.values(localStorage)
     .filter(value => value !== 'INFO')
