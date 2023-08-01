@@ -1,8 +1,9 @@
 import { styled } from 'styled-components';
 
 export const HomePageWrapper = styled.div`
+  /* position: relative; */
   width: 100vw;
-  height: 98vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;

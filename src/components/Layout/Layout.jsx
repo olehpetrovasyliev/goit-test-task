@@ -1,16 +1,17 @@
 import React from 'react';
 import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import { Header, NavWrapper, StyledNavLink } from './Layout.styled';
 
 const Layout = () => {
   return (
     <Suspense fallback={null}>
-      <header>
-        <nav>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/tweets">Tweets</NavLink>
-        </nav>
-      </header>
+      <Header>
+        <NavWrapper>
+          <StyledNavLink to="/">Home</StyledNavLink>
+          <StyledNavLink to="/tweets">Tweets</StyledNavLink>
+        </NavWrapper>
+      </Header>
       <Outlet />
     </Suspense>
   );

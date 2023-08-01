@@ -57,7 +57,6 @@ export const TweetsPage = () => {
     }
     if (filterValue === 'followings') {
       setFilteredUsers([...followingUsers]);
-      console.log(followingUsers);
     }
   }, [filterValue, followingUsers, usersToFollow]);
 
