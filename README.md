@@ -1,68 +1,33 @@
-# React homework template
+# Tweets test task
 
 Этот проект был создан при помощи
 [Create React App](https://github.com/facebook/create-react-app). Для знакомства
 и настройки дополнительных возможностей
 [обратись к документации](https://facebook.github.io/create-react-app/docs/getting-started).
 
-## Создание репозитория по шаблону
+## Technical task
 
-Используй этот репозиторий организации GoIT как шаблон для создания репозитория
-своего проекта. Для этого нажми на кнопку `«Use this template»` и выбери опцию
-`«Create a new repository»`, как показано на изображении.
+According to the layout, you need to implement user cards.
+When you click on the Follow button, the text changes to Following. The color of the button also changes. And yours is added to the number of followers. That is, the initial number is 100,500 followers. When you click on the button, it will be 100,501.
+When the page is updated, the final result of the user's actions should be recorded. That is, if you click on the button and refresh the page, the button still remains in the Following state with the appropriate color, and the number of followers does NOT decrease to the initial value.
+When you click the button again, its text and color change to their original state. The number of followers also changes. It decreases by 1 (100,500).
+In the code, the number 100,500 must be written with one value (100500). In the UI, it is displayed with a comma (100,500).
+Create your personal backend for development using the mockapi.io UI service. Create the users resource. Use the resource constructor and describe the user object as described below.
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+### User
 
-На следующем шаге откроется страница создания нового репозитория. Заполни поле
-его имени, убедись что репозиторий публичный, после чего нажми кнопку
-`«Create repository from template»`.
+Create a user in Mockapi with the following fields: id, user, tweets, followers, avatar (see screenshot below).
+Avatar images must be specified with separate urls in the “avatar” property. You can choose them yourself.
+There should be from 12 users with different values (at your discretion) in the database. Make pagination. One pagination page should display at least 3 tweets, the rest should be loaded when you click Load More
+The rest of the requirements are similar to the technical task described above.
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+### Additional task
 
-После того как репозиторий будет создан, необходимо перейти в настройки
-созданного репозитория на вкладку `Settings` > `Actions` > `General` как
-показано на изображении.
+You will be awarded additional points for performance! Without completing an additional task, you will not be able to get the maximum score.
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+Create routing using React Router.
 
-Проскролив страницу до самого конца, в секции `«Workflow permissions»` выбери
-опцию `«Read and write permissions»` и поставь галочку в чекбоксе. Это
-необходимо для автоматизации процесса деплоя проекта.
-
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
-
-Теперь у тебя есть личный репозиторий проекта, со структурой файлов и папок
-репозитория-шаблона. Далее работай с ним как с любым другим личным репозиторием,
-клонируй его себе на компьютер, пиши код, делай коммиты и отправляй их на
-GitHub.
-
-## Подготовка к работе
-
-1. Убедись что на компьютере установлена LTS-версия Node.js.
-   [Скачай и установи](https://nodejs.org/en/) её если необходимо.
-2. Установи базовые зависимости проекта командой `npm install`.
-3. Запусти режим разработки, выполнив команду `npm start`.
-4. Перейди в браузере по адресу [http://localhost:3000](http://localhost:3000).
-   Эта страница будет автоматически перезагружаться после сохранения изменений в
-   файлах проекта.
-
-## Деплой
-
-Продакшн версия проекта будет автоматически проходить линтинг, собираться и
-деплоиться на GitHub Pages, в ветку `gh-pages`, каждый раз когда обновляется
-ветка `main`. Например, после прямого пуша или принятого пул-реквеста. Для этого
-необходимо в файле `package.json` отредактировать поле `homepage`, заменив
-`your_username` и `your_repo_name` на свои, и отправить изменения на GitHub.
-
-```json
-"homepage": "https://your_username.github.io/your_repo_name/"
-```
-
-Далее необходимо зайти в настройки GitHub-репозитория (`Settings` > `Pages`) и
-выставить раздачу продакшн версии файлов из папки `/root` ветки `gh-pages`, если
-это небыло сделано автоматически.
-
-![GitHub Pages settings](./assets/repo-settings.png)
+The application must have the following routes. If the user entered by a non-existent route, he must be redirected to the home page. '/' – Home component, home page. Styling and design at your discretion '/tweets' - component tweets, page with display of tweets The tweets page should have a Back button that leads to the main page.
 
 ### Статус деплоя
 
@@ -77,28 +42,11 @@ GitHub.
 
 ![Deployment status](./assets/deploy-status.png)
 
-### Живая страница
+### Tasks with an asterisk
 
-Через какое-то время, обычно пару минут, живую страницу можно будет посмотреть
-по адресу указанному в отредактированном свойстве `homepage`. Например, вот
-ссылка на живую версию для этого репозитория
-[https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
+Add filtering. It should be a Dropdown with 3 options (design at your discretion): show all, follow, followings show all - show all tweets. follow - show tweets with follow status. followings - show tweets with following status
 
-Если открывается пустая страница, убедись что во вкладке `Console` нет ошибок
-связанных с неправильными путями к CSS и JS файлам проекта (**404**). Скорее
-всего у тебя неправильное значение свойства `homepage` в файле `package.json`.
 
-### Маршрутизация
-
-Если приложение использует библиотеку `react-router-dom` для маршрутизации,
-необходимо дополнительно настроить компонент `<BrowserRouter>`, передав в пропе
-`basename` точное название твоего репозитория. Слеш в начале строки обязателен.
-
-```jsx
-<BrowserRouter basename="/your_repo_name">
-  <App />
-</BrowserRouter>
-```
 
 ## Как это работает
 
