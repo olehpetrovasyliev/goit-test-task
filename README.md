@@ -27,18 +27,7 @@ Create routing using React Router.
 
 The application must have the following routes. If the user entered by a non-existent route, he must be redirected to the home page. '/' – Home component, home page. Styling and design at your discretion '/tweets' - component tweets, page with display of tweets The tweets page should have a Back button that leads to the main page.
 
-### Статус деплоя
 
-Статус деплоя крайнего коммита отображается иконкой возле его идентификатора.
-
-- **Желтый цвет** - выполняется сборка и деплой проекта.
-- **Зеленый цвет** - деплой завершился успешно.
-- **Красный цвет** - во время линтинга, сборки или деплоя произошла ошибка.
-
-Более детальную информацию о статусе можно посмотреть кликнув по иконке, и в
-выпадающем окне перейти по ссылке `Details`.
-
-![Deployment status](./assets/deploy-status.png)
 
 ### Tasks with an asterisk
 
@@ -46,14 +35,7 @@ Add filtering. It should be a Dropdown with 3 options (design at your discretion
 
 
 
-## Как это работает
+## Troubles and decitions
 
-![How it works](./assets/how-it-works.png)
-
-1. После каждого пуша в ветку `main` GitHub-репозитория, запускается специальный
-   скрипт (GitHub Action) из файла `.github/workflows/deploy.yml`.
-2. Все файлы репозитория копируются на сервер, где проект инициализируется и
-   проходит линтинг и сборку перед деплоем.
-3. Если все шаги прошли успешно, собранная продакшн версия файлов проекта
-   отправляется в ветку `gh-pages`. В противном случае, в логе выполнения
-   скрипта будет указано в чем проблема.
+1. There was a task to toggle saving of status if userif followed or no and saving it. Because this is not real project and backednd was not giving data about it, I added saving in local storage
+2. Difference in some functions prod and developement. On localhost in worked in one way, on github in another. I just found all differences and deleted it before making final commits   
