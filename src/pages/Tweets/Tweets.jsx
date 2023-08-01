@@ -41,13 +41,6 @@ export const TweetsPage = () => {
 
   const followingUsers = savedUsers.filter(user => user.isFollowing === true);
 
-  const getFilteredUsers = () => {
-    if (!1) {
-    }
-    if (!0) {
-    }
-  };
-
   // const followingUsers = savedIds;
 
   const handleClick = () => {
