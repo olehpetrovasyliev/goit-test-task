@@ -14,6 +14,7 @@ import Filter from 'components/Filter/Filter';
 import { nextPage } from 'services/redux/slice';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { TweetsPageWrapper } from './Tweets.syled';
 
 export const TweetsPage = () => {
   const users = useSelector(selectUsers);
@@ -36,6 +37,10 @@ export const TweetsPage = () => {
     .filter(value => value !== 'INFO')
     .map(obj => JSON.parse(obj));
 
+  const usersToFollow = savedUsers.filter(user => user.isFollowing === false);
+
+  const followingUsers = savedUsers.filter(user => user.isFollowing === true);
+
   const getFilteredUsers = () => {
     if (!1) {
     }
@@ -53,9 +58,19 @@ export const TweetsPage = () => {
     console.log(savedUsers);
   };
 
-  // const handleChange = ({target}) => {
-
-  //};
+  const handleChange = ({ target }) => {
+    if (target.value === 'all') {
+      setFilteredUsers([]);
+    }
+    if (target.value === 'follow') {
+      setFilteredUsers([...usersToFollow]);
+      console.log(usersToFollow);
+    }
+    if (target.value === 'followings') {
+      setFilteredUsers([...followingUsers]);
+      console.log(followingUsers);
+    }
+  };
   return (
     <>
       <Button
@@ -64,22 +79,25 @@ export const TweetsPage = () => {
         func={() => navigate(-1)}
         text="back"
       />
-      <Filter />
-      <CardsList arr={users} />;
-      {isLoading ? (
-        <h1>loading</h1>
-      ) : (
-        <Button
-          type="button"
-          func={() => handleClick()}
-          text={'Load more'}
-          background="radial-gradient(
+      <Filter func={handleChange} />
+
+      <TweetsPageWrapper>
+        <CardsList arr={filteredUsers.length ? filteredUsers : users} />;
+        {isLoading ? (
+          <h1>loading</h1>
+        ) : (
+          <Button
+            type="button"
+            func={() => handleClick()}
+            text={'Load more'}
+            background="radial-gradient(
     circle,
     rgb(50, 78, 201) 0%,
     rgb(219, 226, 121) 100%
   )"
-        />
-      )}
+          />
+        )}
+      </TweetsPageWrapper>
     </>
   );
 };
