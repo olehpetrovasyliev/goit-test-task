@@ -12,7 +12,7 @@ import CardsList from 'components/CadsList/CardsList';
 import Button from 'components/Button/Button';
 import Filter from 'components/Filter/Filter';
 import { nextPage } from 'services/redux/slice';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
 export const TweetsPage = () => {
@@ -22,7 +22,7 @@ export const TweetsPage = () => {
   const page = useSelector(selectPage);
   const navigate = useNavigate();
 
-  const [filteredUsers, setFilteredUsers] = useState([]);
+  // const [filteredUsers, setFilteredUsers] = useState([]);
 
   useEffect(() => {
     if (users.length >= 3) {
@@ -33,9 +33,9 @@ export const TweetsPage = () => {
     // }, 0);
   }, [dispatch, users.length]);
 
-  const savedIds = Object.keys(localStorage);
+  // const savedIds = Object.keys(localStorage);
 
-  const followingUsers = savedIds;
+  // const followingUsers = savedIds;
 
   const handleClick = () => {
     dispatch(nextPage(1));
