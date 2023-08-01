@@ -22,16 +22,16 @@ const Card = ({ user }) => {
   const isFirstRender = useRef(true);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-    // setTimeout(() => {
-    localStorage.setItem(
-      String(user.id),
-      JSON.stringify({ ...user, followers: userFollowers, isFollowing })
-    );
-    // }, 0);
+    // if (isFirstRender.current) {
+    //   isFirstRender.current = false;
+    //   return;
+    // }
+    setTimeout(() => {
+      localStorage.setItem(
+        String(user.id),
+        JSON.stringify({ ...user, followers: userFollowers, isFollowing })
+      );
+    }, 0);
   }, [user, userFollowers, isFollowing]);
 
   // useEffect(() => {
