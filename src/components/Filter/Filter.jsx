@@ -1,5 +1,6 @@
 import React from 'react';
 import { Option, Select } from './Filter.styled';
+import PropTypes from 'prop-types';
 
 const Filter = ({ func }) => {
   return (
@@ -13,3 +14,7 @@ const Filter = ({ func }) => {
 };
 
 export default Filter;
+
+Filter.propTypes = {
+  func: PropTypes.func,
+};

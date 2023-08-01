@@ -1,6 +1,7 @@
 import Button from 'components/Button/Button';
 import decor from '../../img/card_picture_1x.png';
 import logo from '../../img/Logo.png';
+import PropTypes from 'prop-types';
 
 import React, { useState, useEffect } from 'react';
 import {
@@ -78,3 +79,9 @@ const Card = ({ user }) => {
 };
 
 export default Card;
+
+Card.propTypes = {
+  user: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  ),
+};
