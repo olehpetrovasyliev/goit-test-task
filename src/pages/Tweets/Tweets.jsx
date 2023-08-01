@@ -53,7 +53,7 @@ export const TweetsPage = () => {
 
   const handleChange = ({ target }) => {
     if (target.value === 'all') {
-      setFilteredUsers([...users]);
+      setFilteredUsers([]);
     }
     if (target.value === 'follow') {
       setTimeout(() => {
