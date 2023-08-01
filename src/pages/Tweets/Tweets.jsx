@@ -60,15 +60,19 @@ export const TweetsPage = () => {
 
   const handleChange = ({ target }) => {
     if (target.value === 'all') {
-      setFilteredUsers([]);
+      setFilteredUsers([...users]);
     }
     if (target.value === 'follow') {
-      setFilteredUsers([...usersToFollow]);
-      console.log(usersToFollow);
+      setTimeout(() => {
+        setFilteredUsers([...usersToFollow]);
+        console.log(usersToFollow);
+      }, 0);
     }
     if (target.value === 'followings') {
-      setFilteredUsers([...followingUsers]);
-      console.log(followingUsers);
+      setTimeout(() => {
+        setFilteredUsers([...followingUsers]);
+        console.log(followingUsers);
+      }, 0);
     }
   };
   return (
