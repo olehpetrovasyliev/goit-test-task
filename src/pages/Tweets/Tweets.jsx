@@ -34,6 +34,13 @@ export const TweetsPage = () => {
     dispatch(fetchUsersPageThunk(1));
   }, [dispatch, users.length]);
 
+  const savedUsers = Object.values(localStorage)
+    .filter(value => value !== 'INFO')
+    .map(obj => JSON.parse(obj));
+
+  const usersToFollow = savedUsers.filter(user => user.isFollowing === false);
+
+  const followingUsers = savedUsers.filter(user => user.isFollowing === true);
   useEffect(() => {
     if (filterValue === 'follow') {
       // setTimeout(() => {
@@ -47,15 +54,7 @@ export const TweetsPage = () => {
       console.log(followingUsers);
       // }, 0);
     }
-  }, [filterValue, followingUsers]);
-
-  const savedUsers = Object.values(localStorage)
-    .filter(value => value !== 'INFO')
-    .map(obj => JSON.parse(obj));
-
-  const usersToFollow = savedUsers.filter(user => user.isFollowing === false);
-
-  const followingUsers = savedUsers.filter(user => user.isFollowing === true);
+  }, [filterValue, followingUsers, usersToFollow]);
 
   // const followingUsers = savedIds;
 
