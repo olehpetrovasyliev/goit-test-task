@@ -23,6 +23,7 @@ export const TweetsPage = () => {
   const page = useSelector(selectPage);
   const navigate = useNavigate();
 
+  const [filterValue, setFilterValue] = useState('all');
   const [filteredUsers, setFilteredUsers] = useState([]);
 
   useEffect(() => {
@@ -32,6 +33,21 @@ export const TweetsPage = () => {
 
     dispatch(fetchUsersPageThunk(1));
   }, [dispatch, users.length]);
+
+  useEffect(() => {
+    if (filterValue === 'follow') {
+      // setTimeout(() => {
+      setFilteredUsers([...usersToFollow]);
+      console.log(usersToFollow);
+      // }, 0);
+    }
+    if (filterValue === 'followings') {
+      // setTimeout(() => {
+      setFilteredUsers([...followingUsers]);
+      console.log(followingUsers);
+      // }, 0);
+    }
+  }, [filterValue]);
 
   const savedUsers = Object.values(localStorage)
     .filter(value => value !== 'INFO')
@@ -52,22 +68,9 @@ export const TweetsPage = () => {
   };
 
   const handleChange = ({ target }) => {
-    if (target.value === 'all') {
-      setFilteredUsers([]);
-    }
-    if (target.value === 'follow') {
-      setTimeout(() => {
-        setFilteredUsers([...usersToFollow]);
-        console.log(usersToFollow);
-      }, 0);
-    }
-    if (target.value === 'followings') {
-      setTimeout(() => {
-        setFilteredUsers([...followingUsers]);
-        console.log(followingUsers);
-      }, 0);
-    }
+    setFilterValue(target.value);
   };
+
   return (
     <>
       <Button
@@ -76,7 +79,7 @@ export const TweetsPage = () => {
         func={() => navigate(-1)}
         text="back"
       />
-      <Filter func={handleChange} />
+      <Filter func={handleChange} value={filterValue} />
 
       <TweetsPageWrapper>
         <CardsList arr={filteredUsers.length ? filteredUsers : users} />;
