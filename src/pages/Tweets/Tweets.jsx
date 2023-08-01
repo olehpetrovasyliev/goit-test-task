@@ -12,35 +12,45 @@ import CardsList from 'components/CadsList/CardsList';
 import Button from 'components/Button/Button';
 import Filter from 'components/Filter/Filter';
 import { nextPage } from 'services/redux/slice';
-// import { useState } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 export const TweetsPage = () => {
   const users = useSelector(selectUsers);
   // const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
   const page = useSelector(selectPage);
+  const navigate = useNavigate();
 
-  // const [filteredUsers, setFilteredUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState([]);
 
   useEffect(() => {
     if (users.length >= 3) {
       return;
     }
-    setTimeout(() => {
-      dispatch(fetchUsersPageThunk(1));
-    }, 0);
+    // setTimeout(() => {
+    dispatch(fetchUsersPageThunk(1));
+    // }, 0);
   }, [dispatch, users.length]);
 
-  // const savedUser = id => JSON.parse(localStorage.getItem(String(id)));
+  const savedIds = Object.keys(localStorage);
+
+  const followingUsers = savedIds;
 
   const handleClick = () => {
     dispatch(nextPage(1));
-
+    console.log(1);
     dispatch(fetchUsersPageThunk(page + 1));
   };
   // const handleChange = value => {};
   return (
     <>
+      <Button
+        type="button"
+        backgroung="#FFF"
+        func={() => navigate(-1)}
+        text="back"
+      />
       <Filter />
       <CardsList arr={users} />;
       <Button
