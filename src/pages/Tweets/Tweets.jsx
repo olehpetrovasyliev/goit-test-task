@@ -45,48 +45,29 @@ export const TweetsPage = () => {
 
   useEffect(() => {
     if (prevFilterValue.current === filterValue) {
-      // Filter value has not changed, no need to update the filtered users.
       return;
     }
 
     prevFilterValue.current = filterValue;
     if (filterValue === 'all') {
       setFilteredUsers([]);
-      // return;
     }
     if (filterValue === 'follow') {
       setFilteredUsers([...usersToFollow]);
-      // return;
     }
     if (filterValue === 'followings') {
       setFilteredUsers([...followingUsers]);
       console.log(followingUsers);
-      // return;
     }
-  }, [filterValue]);
-
-  // const followingUsers = savedIds;
+  }, [filterValue, followingUsers, usersToFollow]);
 
   const handleClick = () => {
     dispatch(nextPage(1));
 
     dispatch(fetchUsersPageThunk(page + 1));
-
-    console.log(savedUsers);
   };
 
   const handleChange = ({ target }) => {
-    // if (target.value === 'all') {
-    //   setFilteredUsers([]);
-    // }
-    // if (target.value === 'follow') {
-    //   setFilteredUsers([...usersToFollow]);
-    //   console.log(usersToFollow);
-    // }
-    // if (target.value === 'followings') {
-    //   setFilteredUsers([...followingUsers]);
-    //   console.log(followingUsers);
-    // }
     setFilterValue(target.value);
   };
   return (

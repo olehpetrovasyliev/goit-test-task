@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Filter = ({ func }) => {
-  // const dispatch = useDispatch();
   return (
     <select name="filter" defaultValue="all" onChange={func}>
       <option value="all">All</option>
