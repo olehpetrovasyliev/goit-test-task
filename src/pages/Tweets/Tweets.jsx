@@ -81,7 +81,7 @@ export const TweetsPage = () => {
           />
           <Filter func={handleChange} />
         </ButtonsPageWrapper>
-        <CardsList arr={filteredUsers.length ? filteredUsers : users} />;
+        <CardsList arr={filteredUsers.length ? filteredUsers : users} />
         {isLoading ? (
           <h1>loading</h1>
         ) : (
