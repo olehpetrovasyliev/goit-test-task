@@ -59,13 +59,9 @@ const Card = ({ user }) => {
       </AvatarWrapper>
 
       <div>
+        <CardText>{user.tweets.toLocaleString('en-US') + ' tweets'}</CardText>
         <CardText>
-          {user.tweets.toLocaleString()}
-          tweets
-        </CardText>
-        <CardText>
-          {userFollowers.toLocaleString()}
-          followers
+          {userFollowers.toLocaleString('en-US') + ' followers'}
         </CardText>
 
         <Button
